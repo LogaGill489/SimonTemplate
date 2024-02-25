@@ -11,6 +11,8 @@ namespace SimonSays
 {
     public partial class MenuScreen : UserControl
     {
+
+        public static bool reverseGame = false;
         public MenuScreen()
         {
             InitializeComponent();
@@ -18,13 +20,24 @@ namespace SimonSays
 
         private void newButton_Click(object sender, EventArgs e)
         {
-            //TODO: remove this screen and start the GameScreen
+            reverseGame = false;
+
+            //changes screen via the method on form1
+            Form1.ScreenChange(this, new GameScreen());
         }
 
 
         private void exitButton_Click(object sender, EventArgs e)
         {
-            //TODO: end the application
+            //closes application
+            Application.Exit();
+        }
+
+        private void reverseButton_Click(object sender, EventArgs e)
+        {
+            reverseGame = true;
+
+            Form1.ScreenChange(this, new GameScreen());
         }
     }
 }
